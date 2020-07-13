@@ -23,9 +23,6 @@ const  addNote = function(title, body) {
     } else {
         console.log('Note title taken!')
     }
-
-   
-
     console.log(notes)
 }
 
