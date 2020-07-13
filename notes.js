@@ -1,6 +1,9 @@
 // Load core modules
 const fs = require('fs')
 
+// Load Third Party modules
+const chalk = require('chalk')
+
 const getNotes = function() {
     return('Your notes...')
 }
@@ -19,9 +22,9 @@ const  addNote = function(title, body) {
             body: body
         })   
         saveNotes(notes)
-        console.log('New Note added!')
+        console.log(chalk.green.inverse('New Note added!'))
     } else {
-        console.log('Note title taken!')
+        console.log(chalk.red.inverse('Note title taken!'))
     }
     console.log(notes)
 }
@@ -47,6 +50,20 @@ const saveNotes = function(notes) {
 
 // Remove note by title
 const removeNote = function(title) {
+    const notes = loadNotes()
+
+    const notesToKeep = notes.filter(function(note) {
+        return note.title !== title
+    })
+
+    if (notes.length > notesToKeep.length) {
+        console.log(chalk.green.inverse('Note removed!'))
+        saveNotes(notesToKeep)
+    } else {
+        console.log(chalk.red.inverse('No note found!'))
+    }
+
+    
 
 }
 
@@ -57,13 +74,14 @@ const readNote = function(title) {
 
 // List all notes
 const  listNotes = function() {
-
+    const notes = loadNotes()
+    console.log(notes)
 }
 
 module.exports = {
     getNotes: getNotes,
-    loadNotes: loadNotes,
     addNote: addNote,
     readNote: readNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    removeNote: removeNote
 }

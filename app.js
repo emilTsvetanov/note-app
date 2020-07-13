@@ -7,6 +7,9 @@ const yargs = require('yargs')
 // Load Own Modules
 const notes = require('./notes.js')
 
+// Customize yargs version
+yargs.version = '1.1.0'
+
 // Add Note Command
 yargs.command({
     command: 'add',
@@ -28,7 +31,7 @@ yargs.command({
     }
 })
 
-// Delete Note Command
+// Remove Note Command
 yargs.command({
     command: 'remove',
     describe: 'Remove note',
@@ -40,7 +43,8 @@ yargs.command({
         }
     },
     handler: function(argv) {
-        console.log(chalk.red.bold(argv.title) + " note has been deleted.")
+        // console.log(chalk.red.bold(argv.title) + " note has been deleted.")
+        notes.removeNote(argv.title)
     }
 })
 
@@ -65,7 +69,8 @@ yargs.command({
     command: 'list',
     describe: 'List all Notes',
     handler: function(argv) {
-        console.log('Listing all notes')
+        console.log('Listing all notes..')
+        notes.listNotes()
     }
 })
 
