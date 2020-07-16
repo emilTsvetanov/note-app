@@ -4,10 +4,6 @@ const fs = require('fs')
 // Load Third Party modules
 const chalk = require('chalk')
 
-const getNotes = function() {
-    return('Your notes...')
-}
-
 // Add note
 const  addNote = function(title, body) {
     const notes = loadNotes()
@@ -43,6 +39,7 @@ const loadNotes = function() {
     
 }
 
+// Save Notes to FS
 const saveNotes = function(notes) {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
@@ -79,7 +76,6 @@ const  listNotes = function() {
 }
 
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
     readNote: readNote,
     listNotes: listNotes,
