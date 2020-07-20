@@ -5,10 +5,10 @@ const fs = require('fs')
 const chalk = require('chalk')
 
 // Add note
-const  addNote = function(title, body) {
+const  addNote = (title, body) => {
     const notes = loadNotes()
 
-    const duplicateNotes = notes.filter(function(note) {
+    const duplicateNotes = notes.filter(note => {
         return note.title === title
     })
 
@@ -40,16 +40,16 @@ const loadNotes = function() {
 }
 
 // Save Notes to FS
-const saveNotes = function(notes) {
+const saveNotes = notes => {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
 }
 
 // Remove note by title
-const removeNote = function(title) {
+const removeNote = title => {
     const notes = loadNotes()
 
-    const notesToKeep = notes.filter(function(note) {
+    const notesToKeep = notes.filter(note => {
         return note.title !== title
     })
 
@@ -65,12 +65,12 @@ const removeNote = function(title) {
 }
 
 // Read a note by title
-const readNote = function(title) {
-
+const readNote = title => {
+   
 }
 
 // List all notes
-const  listNotes = function() {
+const  listNotes = () => {
     const notes = loadNotes()
     console.log(notes)
 }
