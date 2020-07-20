@@ -26,7 +26,7 @@ const  addNote = (title, body) => {
 }
 
 // Load All Notes from JSON file
-const loadNotes = function() {
+const loadNotes = () => {
 
     try {
         const dataBuffer = fs.readFileSync('notes.json')
