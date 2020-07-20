@@ -72,7 +72,10 @@ const readNote = title => {
 // List all notes
 const  listNotes = () => {
     const notes = loadNotes()
-    console.log(notes)
+    console.log(chalk.bgGreen.white('Your Notes:'))
+    notes.forEach(note => {
+        console.log(note.title)
+    })
 }
 
 module.exports = {
