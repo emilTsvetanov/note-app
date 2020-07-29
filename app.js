@@ -48,7 +48,7 @@ yargs.command({
     }
 })
 
-// Read Note Command
+// Read Note by Title Command
 yargs.command({
     command: 'read',
     describe: 'Read a note',
